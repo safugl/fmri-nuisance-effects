@@ -14,7 +14,7 @@ The algorithm consists of the following steps:
 4. Fit regression models that treat the confound signals as predictors and each voxel time course as target variable. Fit models to data from on all-but-one chunk and use such models to predict voxel time courses in held-out chunks. This is repeated for all chunks.
 5. Evaluate goodness-of-fit in terms of coefficient of determination (R2)
 
-Step 4 can be realized with ordinary least squares or with Ridge regression. The latter can be useful when there are several (potentially correlated) confound signals. It is possible to specify the hyperparameters of the Ridge regression models. When numerous hyperparameters are specified, the algorithm will simply output the highest variance explained in each voxel. 
+Step 4 can be realized with ordinary least squares or with Ridge regression. The latter can be useful when there are several (potentially correlated) confound signals. It is possible to specify the hyperparameters of the Ridge regression models. When multiple hyperparameters are specified, the algorithm will simply output the highest variance explained in each voxel. 
 
 
 # Example 01
@@ -27,9 +27,8 @@ confound signals are incorporated into the described framework. The four followi
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, one framewise displacement coefficient, 6 aCompCor coefficients, CSF, and WM confounds in a Ridge regression model.
 
-Models are evaluated using a 5-fold cross-validation procedures. The models incorporate high-pass filters
-with approximate cut-off of 1/128 Hz. Explained variance (R2) is extracted from each model and averaged
-across all 155 participants. The results from the analysis are shown below. Code is available [here](./examples/example01.py)
+Models are evaluated using a 5-fold cross-validation procedures. The models incorporate a high-pass filter
+with an approximate cut-off of 1/128 Hz. R2 is extracted from each model and averaged across all 155 participants. The results from the analysis are shown below. Code is available [here](./examples/example01.py)
 
 <img title="example01" alt="example_results02" src="./examples/example01.png">
 
@@ -42,9 +41,8 @@ Preprocessed data and confound signals are extracted from 30 participants using 
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, 6 CompCor coefficients, CSF, GM, WM and a global signal as confounds in a Ridge regression model.
 
-Models are evaluated using a 5-fold cross-validation procedures. The models incorporate high-pass filters
-with approximate cut-off of 1/128 Hz. Explained variance (R2) is extracted from each model and averaged
-across all 30 participants. The results from the analysis are shown below. Code is available [here](./examples/example02.py)
+Models are evaluated using a 5-fold cross-validation procedures. The models incorporate a high-pass filter
+with an approximate cut-off of 1/128 Hz. R2 is extracted from each model and averaged across all 30 participants. The results from the analysis are shown below. Code is available [here](./examples/example02.py)
 
 <img title="example02" alt="example_results02" src="./examples/example02.png">
 
@@ -56,9 +54,8 @@ Data used for this example was obtained from the OpenNeuro database. Its accessi
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, 6 aCompCor coefficients, 6 tCompCor coefficients, WM, global signal, stdVars, non-stdDVARS, vx-wisestdDVARS and a framewise displacement coefficient as confounds in a Ridge regression model.
 
-Models are evaluated using a 5-fold cross-validation procedures. The models incorporate high-pass filters
-with approximate cut-off of 1/128 Hz. Explained variance (R2) is extracted from each model and averaged
-across all 261 participants. The results from the analysis are shown below. Code is available [here](./examples/example03.py)
+Models are evaluated using a 5-fold cross-validation procedures. The models incorporate a high-pass filter
+with an approximate cut-off of 1/128 Hz. R2 is extracted from each model and averaged across all 261 participants. The results from the analysis are shown below. Code is available [here](./examples/example03.py)
 
 <img title="example03" alt="example_results03" src="./examples/example03.png">
 
@@ -69,6 +66,7 @@ Install fmri-nuisance-effects using one of the following approaches:
 2. Download the repository and run `pip install <local project path>`
 
 # Authors
+Søren A. Fuglsang, Jens Hjortkjær and Hartwig R. Siebner
 
 # References
 Richardson, H., Lisandrelli, G., Riobueno-Naylor, A., & Saxe, R. (2018). Development of the social brain from age three to twelve years. Nature communications, 9(1), 1027. https://www.nature.com/articles/s41467-018-03399-2

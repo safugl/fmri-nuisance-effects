@@ -37,7 +37,7 @@ class NuisanceEffects:
             Specify if the ordinary least squares should be used rather than
             Ridge regression. When ``utilize_ols = True``, ordinary least
             squares is utilized and it is subsequently not possible to update
-            the alphas parameter. When ``utilize_ols = False``, Ridge
+            the alpha parameter. When ``utilize_ols = False``, Ridge
             regression is used. The default is True
 
         Examples

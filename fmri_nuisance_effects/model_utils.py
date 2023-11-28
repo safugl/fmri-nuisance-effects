@@ -3,19 +3,6 @@ import copy
 import numpy as np
 
 
-def dct_coefficients(n_volumes, cutoff_hz, tr):
-    """Create basis functions for Discrete Cosine Transform."""
-    K = int(np.floor(2 * n_volumes * cutoff_hz * tr))
-    D = np.ones((n_volumes, K+1))/np.sqrt(n_volumes)
-    for k in np.arange(1, K+1):
-        D[:, k] = (
-            np.sqrt(2.0 / n_volumes)
-            * np.cos((np.pi / n_volumes)
-                     * (np.arange(0, n_volumes) + 1/2) * k)
-        )
-    return D
-
-
 def _check_input_2d_array(X):
     """Check that X is np.ndarray and that is has two dimensions."""
     if not isinstance(X, np.ndarray):
@@ -33,6 +20,19 @@ def _replace_zeros_with_nans(X):
     Y = copy.deepcopy(X)
     Y[Y == 0] = np.nan
     return Y
+
+
+def dct_coefficients(n_volumes, cutoff_hz, tr):
+    """Create basis functions for Discrete Cosine Transform."""
+    K = int(np.floor(2 * n_volumes * cutoff_hz * tr))
+    D = np.ones((n_volumes, K+1))/np.sqrt(n_volumes)
+    for k in np.arange(1, K+1):
+        D[:, k] = (
+            np.sqrt(2.0 / n_volumes)
+            * np.cos((np.pi / n_volumes)
+                     * (np.arange(0, n_volumes) + 1/2) * k)
+        )
+    return D
 
 
 def ols_deflation(X, D):
@@ -85,15 +85,11 @@ def ridge_regression_estimator(X_train, Y_train, X_val, alpha):
 
     sd_Y = _replace_zeros_with_nans(sd_Y)
 
-    # Create a deep copy of training set
     X = copy.deepcopy(X_train)
     Y = copy.deepcopy(Y_train)
-
-    # Standardize
     X = (X - mu_X) / sd_X
     Y = (Y - mu_Y) / sd_Y
 
-    # Estimate weights
     W = np.linalg.inv(X.T@X + alpha * np.eye(X.shape[1]))@X.T@Y
 
     # Return out-of-sample prediction
@@ -168,6 +164,6 @@ def cross_validate_ridge_model(X, Y, alphas, num_splits):
         # Estimate R2
         R2[..., a] = compute_coefficient_of_determination(Y, P)
 
-    # For convienience and compute time, return only the highest R2 values
+    # For convenience and compute time, return only the highest R2 values
 
     return np.max(R2, axis=-1)
