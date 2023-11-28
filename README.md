@@ -1,3 +1,5 @@
+[![Python application](https://github.com/safugl/fmri-nuisance-effects/actions/workflows/python-app.yml/badge.svg)](https://github.com/safugl/fmri-nuisance-effects/actions/workflows/python-app.yml)
+
 # fmri-nuisance-effects
 Most fMRI preprocessing pipelines outputs confound signals 
 that can be incorporated in subsequent denoising steps or in general linear
@@ -48,9 +50,7 @@ across all 30 participants. The results from the analysis are shown below. Code 
 <img title="example02" alt="example_results02" src="./examples/example02.png">
 
 # Example 03
-Data used for this example was obtained from the OpenNeuro database. Its accession number is ds000030. The data are described in https://www.nature.com/articles/sdata2016110.
-Preprocessed data and confound signals are extracted from 261 participants. Different sets of 
-confound signals are incorporated into the described framework. The four following models are considered:
+Data used for this example was obtained from the OpenNeuro database. Its accession number is ds000030. Preprocessed data and confound signals are extracted from 261 participants. Different sets of confound signals are incorporated into the described framework. The four following models are considered:
 
 * Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control.
 * Model 2: Including 6 tCompCor coefficients in a Ridge regression model.
