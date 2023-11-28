@@ -12,12 +12,11 @@ The algorithm consists of the following steps:
 4. Fit regression models that treat the confound signals as predictors and each voxel time course as target variable. Fit models to data from on all-but-one chunk and use such models to predict voxel time courses in held-out chunks. This is repeated for all chunks.
 5. Evaluate goodness-of-fit in terms of coefficient of determination (R2)
 
-Step 4 can be realized with ordinary least squares or with Ridge regression (see e.g., the example [[here](./examples/example01.py)). The latter can be useful when there are several (potentially correlated) confound signals. It is possible to specificy the hyperparameters of the Ridge
-regression models. When numerous hyperparameters are specified, the algorithm will simply output the highest variance explained in each voxel. 
+Step 4 can be realized with ordinary least squares or with Ridge regression. The latter can be useful when there are several (potentially correlated) confound signals. It is possible to specify the hyperparameters of the Ridge regression models. When numerous hyperparameters are specified, the algorithm will simply output the highest variance explained in each voxel. 
 
 
 # Example 01
-This example uses data available on https://openneuro.org/datasets/ds000228/versions/1.0.0.
+Data used for this example was obtained from the OpenNeuro database. Its accession number is ds000228.
 Preprocessed data and confound signals are extracted from 155 participants. Different sets of 
 confound signals are incorporated into the described framework. The four following models are considered:
 
@@ -28,7 +27,7 @@ confound signals are incorporated into the described framework. The four followi
 
 Models are evaluated using a 5-fold cross-validation procedures. The models incorporate high-pass filters
 with approximate cut-off of 1/128 Hz. Explained variance (R2) is extracted from each model and averaged
-across all 155 participants. The results from the analysis are shown below. Code is available [here](./examples/example02.py)
+across all 155 participants. The results from the analysis are shown below. Code is available [here](./examples/example01.py)
 
 <img title="example01" alt="example_results02" src="./examples/example01.png">
 
@@ -49,7 +48,7 @@ across all 30 participants. The results from the analysis are shown below. Code 
 <img title="example02" alt="example_results02" src="./examples/example02.png">
 
 # Example 03
-This example uses data available on OpenfMRI (id: ds000030) described in https://www.nature.com/articles/sdata2016110.
+Data used for this example was obtained from the OpenNeuro database. Its accession number is ds000030. The data are described in https://www.nature.com/articles/sdata2016110.
 Preprocessed data and confound signals are extracted from 261 participants. Different sets of 
 confound signals are incorporated into the described framework. The four following models are considered:
 
@@ -73,9 +72,7 @@ Install fmri-nuisance-effects using one of the following approaches:
 # Authors
 
 # References
-Richardson, H., Lisandrelli, G., Riobueno-Naylor, A., & Saxe, R. (2018). Development of the social brain from age three to twelve years. Nature communications, 9(1), 1027. and include the following message 'This data was obtained from the OpenNeuro database. Its accession number is ds000228.'
-
-Richardson, H., Lisandrelli, G., Riobueno-Naylor, A., & Saxe, R. (2018). Development of the social brain from age three to twelve years. Nature communications, 9(1), 1027.https://www.nature.com/articles/s41467-018-03399-2
+Richardson, H., Lisandrelli, G., Riobueno-Naylor, A., & Saxe, R. (2018). Development of the social brain from age three to twelve years. Nature communications, 9(1), 1027. https://www.nature.com/articles/s41467-018-03399-2
 
 Gorgolewski KJ, Durnez J and Poldrack RA. Preprocessed Consortium for Neuropsychiatric Phenomics dataset. F1000Research 2017, 6:1262
 https://doi.org/10.12688/f1000research.11964.2
