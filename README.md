@@ -19,10 +19,10 @@ Step 4 can be realized with ordinary least squares or with Ridge regression. The
 
 # Example 01
 Data used for this example was obtained from the OpenNeuro database. Its accession number is ds000228.
-Preprocessed data and confound signals are extracted from 155 participants. Different sets of 
+Preprocessed data and confound signals are extracted from 155 participants using [Nilearn](https://nilearn.github.io/stable/modules/generated/nilearn.datasets.fetch_development_fmri.html). Different sets of 
 confound signals are incorporated into the described framework. The four following models are considered:
 
-* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control.
+* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and results should show no clear trends.
 * Model 2: Including CSF confound signal as single regressor in a OLS regression model.
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, one framewise displacement coefficient, 6 aCompCor coefficients, CSF, and WM confounds in a Ridge regression model.
@@ -35,10 +35,9 @@ across all 155 participants. The results from the analysis are shown below. Code
 
 # Example 02
 This example uses data available on http://fcon_1000.projects.nitrc.org/indi/adhd200/index.html.
-Preprocessed data and confound signals are extracted from 30 participants. Different sets of 
-confound signals are incorporated into the described framework. The four following models are considered:
+Preprocessed data and confound signals are extracted from 30 participants using [Nilearn](https://nilearn.github.io/dev/modules/generated/nilearn.datasets.fetch_adhd.html). Different sets of confound signals are incorporated into the described framework. The four following models are considered:
 
-* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control.
+* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and results should show no clear trends.
 * Model 2: Including CSF confound signal as single regressor in a OLS regression model.
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, 6 CompCor coefficients, CSF, GM, WM and a global signal as confounds in a Ridge regression model.
@@ -50,9 +49,9 @@ across all 30 participants. The results from the analysis are shown below. Code 
 <img title="example02" alt="example_results02" src="./examples/example02.png">
 
 # Example 03
-Data used for this example was obtained from the OpenNeuro database. Its accession number is ds000030. Preprocessed data and confound signals are extracted from 261 participants. Different sets of confound signals are incorporated into the described framework. The four following models are considered:
+Data used for this example was obtained from the OpenNeuro database. Its accession number is ds000030. Preprocessed data and confound signals are extracted from 261 participants using [Nilearn](https://nilearn.github.io/dev/modules/generated/nilearn.datasets.fetch_ds000030_urls.html#nilearn.datasets.fetch_ds000030_urls). Different sets of confound signals are incorporated into the described framework. The four following models are considered:
 
-* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control.
+* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and results should show no clear trends.
 * Model 2: Including 6 tCompCor coefficients in a Ridge regression model.
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, 6 aCompCor coefficients, 6 tCompCor coefficients, WM, global signal, stdVars, non-stdDVARS, vx-wisestdDVARS and a framewise displacement coefficient as confounds in a Ridge regression model.
@@ -77,6 +76,8 @@ Richardson, H., Lisandrelli, G., Riobueno-Naylor, A., & Saxe, R. (2018). Develop
 Gorgolewski KJ, Durnez J and Poldrack RA. Preprocessed Consortium for Neuropsychiatric Phenomics dataset. F1000Research 2017, 6:1262
 https://doi.org/10.12688/f1000research.11964.2
 
-Poldrack, Russell A., et al. "A phenome-wide examination of neural and cognitive function." Scientific data 3.1 (2016): 1-12.
+R.A. Poldrack, E. Congdon, W. Triplett, K.J. Gorgolewski, K.H. Karlsgodt, J.A. Mumford, F.W. Sabb, N.B. Freimer, E.D. London, T.D. Cannon, and R.M. Bilder. A phenome-wide examination of neural and cognitive function. Scientific Data, 3(1):160110, December 2016. URL: https://doi.org/10.1038/sdata.2016.110, doi:10.1038/sdata.2016.110.
 
 Pierre Bellec, Carlton Chu, François Chouinard-Decorte, Yassine Benhajali, Daniel S. Margulies, R. Cameron Craddock (2017). The Neuro Bureau ADHD-200 Preprocessed repository. NeuroImage, 144, Part B, pp. 275 - 286. doi:10.1016/j.neuroimage.2016.06.034
+
+Nitrc adhd resting-state dataset. ftp://www.nitrc.org/fcon_1000/htdocs/indi/adhd200/sites/ADHD200_40sub_preprocessed.tgz. Accessed: 2021-05-19.
