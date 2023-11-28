@@ -3,12 +3,11 @@ import copy
 import numpy as np
 
 
-
 def dct_coefficients(n_volumes, cutoff_hz, tr):
-    """Create basis functions for Discrete Cosine Transform as in SPM."""
+    """Create basis functions for Discrete Cosine Transform."""
     K = int(np.floor(2 * n_volumes * cutoff_hz * tr))
     D = np.ones((n_volumes, K+1))/np.sqrt(n_volumes)
-    for k in np.arange(1,K+1):
+    for k in np.arange(1, K+1):
         D[:, k] = (
             np.sqrt(2.0 / n_volumes)
             * np.cos((np.pi / n_volumes)
@@ -27,6 +26,8 @@ def _check_input_2d_array(X):
 
 def _replace_zeros_with_nans(X):
     """Replace zeros with nans in an array X."""
+    if not isinstance(X, np.ndarray):
+        raise TypeError(f'{X} should be an array.')
     if not X.dtype.kind == 'f':
         raise TypeError(f'{X} should be floats.')
     Y = copy.deepcopy(X)
@@ -40,11 +41,7 @@ def ols_deflation(X, D):
     _check_input_2d_array(D)
     if not X.shape[0] == D.shape[0]:
         raise TypeError(f'{X.shape} and {D.shape} have non-matching rows')
-
-    # Return the least-squares solution to the linear matrix equation.
     betas = np.linalg.lstsq(D, X, rcond=None)[0]
-
-    # Project out
     Y = copy.deepcopy(X)
     Y -= D @ betas
 
@@ -108,10 +105,10 @@ def compute_coefficient_of_determination(Y, P):
     _check_input_2d_array(Y)
     _check_input_2d_array(P)
 
-    nominator = np.sum((Y - Y.mean(axis=0, keepdims=True))**2, axis=0)
-    denominator = np.sum((Y - P)**2, axis=0)
+    ss_tot = np.sum((Y - Y.mean(axis=0, keepdims=True))**2, axis=0)
+    ss_res = np.sum((Y - P)**2, axis=0)
 
-    return 1 - np.divide(denominator, _replace_zeros_with_nans(nominator))
+    return 1 - np.divide(ss_res, _replace_zeros_with_nans(ss_tot))
 
 
 def cross_validate_ridge_model(X, Y, alphas, num_splits):
