@@ -22,12 +22,12 @@ Data used for this example was obtained from the OpenNeuro database. Its accessi
 Preprocessed data and confound signals are extracted from 155 participants using [Nilearn](https://nilearn.github.io/stable/modules/generated/nilearn.datasets.fetch_development_fmri.html). Different sets of 
 confound signals are incorporated into the described framework. The four following models are considered:
 
-* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and results should show no clear trends.
+* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and the results should show no clear trends.
 * Model 2: Including CSF confound signal as single regressor in a OLS regression model.
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, one framewise displacement coefficient, 6 aCompCor coefficients, CSF, and WM confounds in a Ridge regression model.
 
-Models are evaluated using a 5-fold cross-validation procedures. The models incorporate a high-pass filter
+Models are evaluated using 5-fold cross-validation procedures. The models incorporate a high-pass filter
 with an approximate cut-off of 1/128 Hz. R2 is extracted from each model and averaged across all 155 participants. The results from the analysis are shown below. Code is available [here](./examples/example01.py)
 
 <img title="example01" alt="example_results02" src="./examples/example01.png">
@@ -36,12 +36,12 @@ with an approximate cut-off of 1/128 Hz. R2 is extracted from each model and ave
 This example uses data available on http://fcon_1000.projects.nitrc.org/indi/adhd200/index.html.
 Preprocessed data and confound signals are extracted from 30 participants using [Nilearn](https://nilearn.github.io/dev/modules/generated/nilearn.datasets.fetch_adhd.html). Different sets of confound signals are incorporated into the described framework. The four following models are considered:
 
-* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and results should show no clear trends.
+* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and the results should show no clear trends.
 * Model 2: Including CSF confound signal as single regressor in a OLS regression model.
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, 6 CompCor coefficients, CSF, GM, WM and a global signal as confounds in a Ridge regression model.
 
-Models are evaluated using a 5-fold cross-validation procedures. The models incorporate a high-pass filter
+Models are evaluated using 5-fold cross-validation procedures. The models incorporate a high-pass filter
 with an approximate cut-off of 1/128 Hz. R2 is extracted from each model and averaged across all 30 participants. The results from the analysis are shown below. Code is available [here](./examples/example02.py)
 
 <img title="example02" alt="example_results02" src="./examples/example02.png">
@@ -49,12 +49,12 @@ with an approximate cut-off of 1/128 Hz. R2 is extracted from each model and ave
 # Example 03
 Data used for this example was obtained from the OpenNeuro database. Its accession number is ds000030. Preprocessed data and confound signals are extracted from 261 participants using [Nilearn](https://nilearn.github.io/dev/modules/generated/nilearn.datasets.fetch_ds000030_urls.html#nilearn.datasets.fetch_ds000030_urls). Different sets of confound signals are incorporated into the described framework. The four following models are considered:
 
-* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and results should show no clear trends.
+* Model 1: Including only random noise signals as regressors in a Ridge regression model. This serves as a control and the results should show no clear trends.
 * Model 2: Including 6 tCompCor coefficients in a Ridge regression model.
 * Model 3: Including 6 motion regressors in a Ridge regression model.
 * Model 4: Including 6 motion regressors, 6 aCompCor coefficients, 6 tCompCor coefficients, WM, global signal, stdVars, non-stdDVARS, vx-wisestdDVARS and a framewise displacement coefficient as confounds in a Ridge regression model.
 
-Models are evaluated using a 5-fold cross-validation procedures. The models incorporate a high-pass filter
+Models are evaluated using 5-fold cross-validation procedures. The models incorporate a high-pass filter
 with an approximate cut-off of 1/128 Hz. R2 is extracted from each model and averaged across all 261 participants. The results from the analysis are shown below. Code is available [here](./examples/example03.py)
 
 <img title="example03" alt="example_results03" src="./examples/example03.png">
