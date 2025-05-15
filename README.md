@@ -1,4 +1,4 @@
-[![Python application](https://github.com/safugl/fmri-nuisance-effects/actions/workflows/python-app.yml/badge.svg)](https://github.com/safugl/fmri-nuisance-effects/actions/workflows/python-app.yml)
+[![Python application](https://github.com/safugl/fmri-nuisance-effects/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/safugl/fmri-nuisance-effects/actions/workflows/python-app.yml)
 
 # fmri-nuisance-effects
 Most fMRI preprocessing pipelines outputs confound signals 
